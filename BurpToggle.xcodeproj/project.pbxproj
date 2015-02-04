@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B09A59541A8254BF00C68F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A59531A8254BF00C68F6E /* AppDelegate.swift */; };
 		B09A59561A8254BF00C68F6E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B09A59551A8254BF00C68F6E /* Images.xcassets */; };
-		B09A59651A8254BF00C68F6E /* BurpToggleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A59641A8254BF00C68F6E /* BurpToggleTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,8 +27,6 @@
 		B09A59531A8254BF00C68F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B09A59551A8254BF00C68F6E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B09A595E1A8254BF00C68F6E /* BurpToggleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BurpToggleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B09A59631A8254BF00C68F6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B09A59641A8254BF00C68F6E /* BurpToggleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurpToggleTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				B09A59501A8254BF00C68F6E /* BurpToggle */,
-				B09A59611A8254BF00C68F6E /* BurpToggleTests */,
 				B09A594F1A8254BF00C68F6E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,23 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				B09A59521A8254BF00C68F6E /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B09A59611A8254BF00C68F6E /* BurpToggleTests */ = {
-			isa = PBXGroup;
-			children = (
-				B09A59641A8254BF00C68F6E /* BurpToggleTests.swift */,
-				B09A59621A8254BF00C68F6E /* Supporting Files */,
-			);
-			path = BurpToggleTests;
-			sourceTree = "<group>";
-		};
-		B09A59621A8254BF00C68F6E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B09A59631A8254BF00C68F6E /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -209,7 +188,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B09A59651A8254BF00C68F6E /* BurpToggleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
