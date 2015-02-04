@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B09A59541A8254BF00C68F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A59531A8254BF00C68F6E /* AppDelegate.swift */; };
 		B09A59561A8254BF00C68F6E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B09A59551A8254BF00C68F6E /* Images.xcassets */; };
-		B09A59591A8254BF00C68F6E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09A59571A8254BF00C68F6E /* MainMenu.xib */; };
 		B09A59651A8254BF00C68F6E /* BurpToggleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A59641A8254BF00C68F6E /* BurpToggleTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +27,6 @@
 		B09A59521A8254BF00C68F6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B09A59531A8254BF00C68F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B09A59551A8254BF00C68F6E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B09A59581A8254BF00C68F6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B09A595E1A8254BF00C68F6E /* BurpToggleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BurpToggleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09A59631A8254BF00C68F6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B09A59641A8254BF00C68F6E /* BurpToggleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurpToggleTests.swift; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 			children = (
 				B09A59531A8254BF00C68F6E /* AppDelegate.swift */,
 				B09A59551A8254BF00C68F6E /* Images.xcassets */,
-				B09A59571A8254BF00C68F6E /* MainMenu.xib */,
 				B09A59511A8254BF00C68F6E /* Supporting Files */,
 			);
 			path = BurpToggle;
@@ -187,7 +184,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09A59561A8254BF00C68F6E /* Images.xcassets in Resources */,
-				B09A59591A8254BF00C68F6E /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,17 +222,6 @@
 			targetProxy = B09A595F1A8254BF00C68F6E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		B09A59571A8254BF00C68F6E /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B09A59581A8254BF00C68F6E /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B09A59661A8254BF00C68F6E /* Debug */ = {
@@ -393,6 +378,7 @@
 				B09A596A1A8254BF00C68F6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B09A596B1A8254BF00C68F6E /* Build configuration list for PBXNativeTarget "BurpToggleTests" */ = {
 			isa = XCConfigurationList;
@@ -401,6 +387,7 @@
 				B09A596D1A8254BF00C68F6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
