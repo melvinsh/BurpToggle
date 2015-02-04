@@ -5,10 +5,10 @@ Status bar application for OS X to toggle the state of the system HTTP/HTTPS pro
 
 
 ### Settings
-Host: localhost  
-Port: 8000
+- Host: localhost  
+- Port: 8000
 
 ### Supported interfaces
-Wi-Fi  
-Ethernet  
-USB Ethernet  
+- Wi-Fi  
+- Ethernet  
+- USB Ethernet  
