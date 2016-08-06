@@ -9,7 +9,7 @@ Designed to use with Burp Suite.
 
 ### Settings
 - Host: localhost  
-- Port: 8000
+- Port: 8080
 
 ### Supported interfaces
 - Wi-Fi  
