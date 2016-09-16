@@ -11,142 +11,57 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
+    @IBOutlet weak var window: NSWindow?
     
-    var statusBar = NSStatusBar.systemStatusBar()
+    var statusBar = NSStatusBar.system()
     var statusBarItem : NSStatusItem = NSStatusItem()
     
     var menu: NSMenu = NSMenu()
-    var toggleMenuItem : NSMenuItem = NSMenuItem()
-    var toggleMenuItem2 : NSMenuItem = NSMenuItem()
-    var toggleMenuItem3 : NSMenuItem = NSMenuItem()
+    var toggleProxyMenuItem : NSMenuItem = NSMenuItem()
+    var toggleSecureProxyMenuItem : NSMenuItem = NSMenuItem()
+    var toggleInterFaceMenuItem : NSMenuItem = NSMenuItem()
     var quitMenuItem : NSMenuItem = NSMenuItem()
     
-    var interface = "Wi-Fi"
-    
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
     
-    func toggleInterface(sender: AnyObject)
-    {
-        if(interface == "Wi-Fi") {
-            interface = "Ethernet"
-        }
-        else if(interface == "Ethernet") {
-            interface = "USB\\ Ethernet"
-        }
-        else {
-            interface = "Wi-Fi"
-        }
-        
-        setProxyStatusMenu()
-        setSecureProxyStatusMenu()
-        
-        toggleMenuItem3.title = "Toggle interface (Current: " + interface + ")"
-    }
-    
-    func getProxyStatus() -> Int {
-        let task = NSTask()
-        task.launchPath = "/bin/sh"
-        task.arguments = ["-c", "networksetup -getwebproxy " + interface + " | grep Yes"]
-        
-        let pipe = NSPipe()
-        task.standardOutput = pipe
-        task.launch()
-        
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        
-        let output = NSString(data: data, encoding: NSUTF8StringEncoding)!
-        
-        return output.length
-    }
-    
-    func getSecureProxyStatus() -> Int {
-        let task = NSTask()
-        task.launchPath = "/bin/sh"
-        task.arguments = ["-c", "networksetup -getsecurewebproxy " + interface + " | grep Yes"]
-        
-        let pipe = NSPipe()
-        task.standardOutput = pipe
-        task.launch()
-        
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output = NSString(data: data, encoding: NSUTF8StringEncoding)!
-        
-        return output.length
-    }
-    
-    func toggleProxy(sender: AnyObject) {
-        if(getProxyStatus() ==  13) {
-            system("networksetup -setwebproxystate " + interface + " off");
-            toggleMenuItem.title = "Enable HTTP Proxy"
-        } else {
-            system("networksetup -setwebproxy " + interface + " localhost 8080");
-            toggleMenuItem.title = "Disable HTTP Proxy"
-        }
-    }
-    
-    func toggleSecureProxy(sender: AnyObject) {
-        if(getSecureProxyStatus() ==  13) {
-            system("networksetup -setsecurewebproxystate " + interface + " off");
-            toggleMenuItem2.title = "Enable HTTPS Proxy"
-        } else {
-            system("networksetup -setsecurewebproxy " + interface + " localhost 8080");
-            toggleMenuItem2.title = "Disable HTTPS Proxy"
-        }
-    }
-    
-    func setProxyStatusMenu() {
-        if(getProxyStatus() == 13) {
-            toggleMenuItem.title = "Disable HTTP Proxy"
-        } else {
-            toggleMenuItem.title = "Enable HTTP Proxy"
-        }
-    }
-    
-    func setSecureProxyStatusMenu() {
-        if(getSecureProxyStatus() == 13) {
-            toggleMenuItem2.title = "Disable HTTPS Proxy"
-        } else {
-            toggleMenuItem2.title = "Enable HTTPS Proxy"
-        }
-    }
-    
-    func exitNow(sender: AnyObject) {
-        NSApplication.sharedApplication().terminate(self)
+    func exitNow(_ sender: AnyObject) {
+        NSApplication.shared().terminate(self)
     }
     
     override func awakeFromNib() {
-        statusBarItem = statusBar.statusItemWithLength(-1)
+        let proxy = Proxy(items: [toggleProxyMenuItem, toggleSecureProxyMenuItem, toggleInterFaceMenuItem])
+
+        statusBarItem = statusBar.statusItem(withLength: -1)
         statusBarItem.menu = menu
         statusBarItem.title = "B"
         
-        setProxyStatusMenu()
+        proxy.setProxyStatusMenu()
         
-        toggleMenuItem.action = Selector("toggleProxy:")
-        toggleMenuItem.keyEquivalent = ""
+        toggleProxyMenuItem.action = #selector(proxy.toggleProxy(_:))
+        toggleProxyMenuItem.keyEquivalent = ""
         
-        setSecureProxyStatusMenu()
+        proxy.setSecureProxyStatusMenu()
         
-        toggleMenuItem2.action = Selector("toggleSecureProxy:")
-        toggleMenuItem2.keyEquivalent = ""
+        toggleSecureProxyMenuItem.action = #selector(proxy.toggleSecureProxy(_:))
+        toggleSecureProxyMenuItem.keyEquivalent = ""
         
-        toggleMenuItem3.title = "Toggle interface (Current: " + interface + ")"
-        toggleMenuItem3.action = Selector("toggleInterface:")
-        toggleMenuItem3.keyEquivalent = ""
+        toggleInterFaceMenuItem.title = "Toggle interface (Current: " + proxy.getInterface() + ")"
+        toggleInterFaceMenuItem.action = #selector(proxy.toggleInterface(_:))
+        toggleInterFaceMenuItem.keyEquivalent = ""
         
         quitMenuItem.title = "Quit"
-        quitMenuItem.action = Selector("exitNow:")
+        quitMenuItem.action = #selector(AppDelegate.exitNow(_:))
         quitMenuItem.keyEquivalent = ""
         
-        menu.addItem(toggleMenuItem)
-        menu.addItem(toggleMenuItem2)
-        menu.addItem(toggleMenuItem3)
+        menu.addItem(toggleProxyMenuItem)
+        menu.addItem(toggleSecureProxyMenuItem)
+        menu.addItem(toggleInterFaceMenuItem)
         menu.addItem(quitMenuItem)
     }
 
